@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add new place</title>
+</head>
+
+<body>
+    <h3>Add a New Listing</h3>
+    <form action="/listings" method="POST">
+        <!-- we can send from data as object using listing[fieldName] -->
+        <label for="title">Title</label> <br>
+        <input type="text" id="title" name="listing[title]" required placeholder="Enter title"> <br><br>
+
+        <label for="description">Description</label> <br>
+        <textarea id="description" name="listing[description]" required
+            placeholder="Enter description"></textarea><br><br>
+
+        <label for="price">Price per night</label> <br>
+        <input type="number" id="price" name="listing[price]" required placeholder="Enter price"><br><br>
+
+        <label for="image">Image URL</label> <br>
+        <input type="text" id="image" name="listing[image]" placeholder="Enter image URL"><br><br>
+
+        <label for="country">Country</label>
+        <input type="text" id="country" name="listing[country]" required placeholder="Enter country"><br><br>
+
+        <label for="location">Location</label>
+        <input type="text" id="location" name="listing[location]" required placeholder="Enter location"><br><br>
+
+
+
+        <button type="submit">Add Listing</button>
+    </form>
+</body>
+
+</html>

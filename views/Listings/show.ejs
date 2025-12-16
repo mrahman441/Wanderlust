@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= listing.title %>
+    </title>
+</head>
+
+<body>
+    <h1>
+        <%= listing.title %>
+    </h1>
+    <h4>
+        <a href="/listings/<%= listing._id %>/edit">Edit</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+        <form action="/listings/<%= listing._id %>?_method=DELETE" method="POST" style="display: inline-block;">
+            <button type="submit">Delete</button>
+        </form>
+    </h4>
+
+    <div>
+        <img src="<%= listing.image %>" alt="<%= listing.title %>" width="300" height="300" />
+        <p>
+            <%= listing.description %>
+        </p>
+        <p>Price: $<%= listing.price.toLocaleString("en-US") %> per night</p>
+        <p>Location: <%= listing.location %>, <%= listing.country %>
+        </p>
+        <p>Country: <%= listing.country %>
+        </p>
+    </div>
+</body>
+
+</html>
