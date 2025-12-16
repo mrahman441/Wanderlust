@@ -7,3 +7,6 @@ console.log(number.toLocaleString("en-BD")); // Output: 10,000
 
 // we can send from data as object from forms itself
 // see views/Listings/new.ejs for implementation
+
+// ejs mate : it helps us to create layouts for ejs files and avoid repetition
+// see app.js and views/layouts/boilerplate.ejs for implementation

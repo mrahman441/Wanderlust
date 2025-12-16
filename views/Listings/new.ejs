@@ -1,39 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('./layouts/boilerplate') -%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new place</title>
-</head>
+    <div class="row mt-3 mb-5">
+        <div class="col-12 col-md-8 offset-md-2">
+            <h3 class="mb-3">Add a New Listing</h3>
+            <form action="/listings" method="POST">
+                <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" id="title" name="listing[title]" class="form-control" required
+                        placeholder="Enter title">
+                </div>
 
-<body>
-    <h3>Add a New Listing</h3>
-    <form action="/listings" method="POST">
-        <!-- we can send from data as object using listing[fieldName] -->
-        <label for="title">Title</label> <br>
-        <input type="text" id="title" name="listing[title]" required placeholder="Enter title"> <br><br>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea id="description" name="listing[description]" class="form-control" rows="5" required
+                        placeholder="Enter description"></textarea>
+                </div>
 
-        <label for="description">Description</label> <br>
-        <textarea id="description" name="listing[description]" required
-            placeholder="Enter description"></textarea><br><br>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" name="listing[location]" class="form-control" required
+                            placeholder="Enter location">
+                    </div>
 
-        <label for="price">Price per night</label> <br>
-        <input type="number" id="price" name="listing[price]" required placeholder="Enter price"><br><br>
+                    <div class="col-md-6 mb-3">
+                        <label for="country" class="form-label">Country</label>
+                        <input type="text" id="country" name="listing[country]" class="form-control" required
+                            placeholder="Enter country">
+                    </div>
+                </div>
 
-        <label for="image">Image URL</label> <br>
-        <input type="text" id="image" name="listing[image]" placeholder="Enter image URL"><br><br>
+                <div class="row">
 
-        <label for="country">Country</label>
-        <input type="text" id="country" name="listing[country]" required placeholder="Enter country"><br><br>
+                    <div class="col-md-6 mb-3">
+                        <label for="price" class="form-label">Price per night</label>
+                        <input type="number" id="price" name="listing[price]" class="form-control" required
+                            placeholder="Enter price">
+                    </div>
 
-        <label for="location">Location</label>
-        <input type="text" id="location" name="listing[location]" required placeholder="Enter location"><br><br>
+                    <div class="col-md-6 mb-3">
+                        <label for="image" class="form-label">Image URL</label>
+                        <input type="text" id="image" name="listing[image]" class="form-control"
+                            placeholder="Enter image URL">
+                    </div>
+                </div>
 
-
-
-        <button type="submit">Add Listing</button>
-    </form>
-</body>
-
-</html>
+                <button type="submit" class="btn btn-dark">Add Listing</button>
+            </form>
+        </div>
+    </div>
