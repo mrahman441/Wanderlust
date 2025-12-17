@@ -1,7 +1,32 @@
 const express = require('express');
 const router = express.Router();
 const Listing = require('../models/listing.js');
+const multer = require('multer');
+const path = require('path');
 
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, 'public/uploads/');
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        cb(null, uniqueSuffix + path.extname(file.originalname));
+    }
+});
+
+const upload = multer({
+    storage: storage,
+    fileFilter: function (req, file, cb) {
+        const filetypes = /jpeg|jpg|png|gif|webp/;
+        const mimetype = filetypes.test(file.mimetype);
+        const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+        if (mimetype && extname) {
+            return cb(null, true);
+        }
+        cb(new Error('Only image files are allowed!'));
+    }
+});
 
 // Route to get all listings
 // API: GET /listings
@@ -18,8 +43,11 @@ router.get('/new', (req, res) => {
 
 // Route to handle new listing form submission
 // API: POST /listings
-router.post('/', async (req, res) => {
+router.post('/', upload.single('image'), async (req, res) => {
     const newListing = new Listing(req.body.listing);
+    if (req.file) {
+        newListing.image = '/uploads/' + req.file.filename;
+    }
     await newListing.save();
     res.redirect('/listings');
 });
@@ -34,9 +62,13 @@ router.get('/:id/edit', async (req, res) => {
 
 // Update listing
 // API: PUT /listings/:id
-router.put('/:id', async (req, res) => {
+router.put('/:id', upload.single('image'), async (req, res) => {
     const { id } = req.params;
-    await Listing.findByIdAndUpdate(id, { ...req.body.listing }); // spread operator to send data as object
+    const updateData = { ...req.body.listing };
+    if (req.file) {
+        updateData.image = '/uploads/' + req.file.filename;
+    }
+    await Listing.findByIdAndUpdate(id, updateData);
     res.redirect(`/listings/${id}`);
 });
 

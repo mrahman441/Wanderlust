@@ -39,5 +39,5 @@ app.get("/", (req, res) => {
     res.send("Hi, I'm root!!")
 })
 app.listen(8080, () => {
-    console.log("Server is running on 8080");
+    console.log("Server is running on: http://localhost:8080");
 })

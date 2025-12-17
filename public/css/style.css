@@ -26,8 +26,6 @@
     font-size: 1.065rem;
 }
 
-
-
 .f-info-links a {
     color: #222222 !important;
     text-decoration: none;
@@ -88,4 +86,5 @@
     object-fit: cover;
     border-radius: 0.8rem;
     margin-bottom: 1rem;
+    object-fit: cover;
 }
