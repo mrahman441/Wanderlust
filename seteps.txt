@@ -1,0 +1,4 @@
+To develop a project following steps are done:
+1. Set up EJS Mate for templating.
+2. Install and set up Joi for data validation.
+3. 

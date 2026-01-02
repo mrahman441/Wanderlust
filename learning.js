@@ -10,3 +10,7 @@ console.log(number.toLocaleString("en-BD")); // Output: 10,000
 
 // ejs mate : it helps us to create layouts for ejs files and avoid repetition
 // see app.js and views/layouts/boilerplate.ejs for implementation
+
+// to validate our data before saving to database we can use joi npm package
+// to install joi: npm install joi
+// see schema.js and utils/validate.js and routes/listings.js for implementation

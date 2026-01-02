@@ -6,16 +6,28 @@ const listingSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: String,
+    description: {
+        type: String,
+        required: true,
+    },
     image: {
         type: String,
         // setting default img if user don't provide any img
         set: (v) => v === "" ? imgLink : v, // this is for form perspective
         default: imgLink, // this for normal hard coded data push
     },
-    price: Number,
-    location: String,
-    country: String,
+    price: {
+        type: Number,
+        required: true,
+    },
+    location: {
+        type: String,
+        required: true,
+    },
+    country: {
+        type: String,
+        required: true,
+    },
 });
 
 const Listing = mongoose.model("Listing", listingSchema);

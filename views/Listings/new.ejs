@@ -3,17 +3,29 @@
     <div class="row mt-3 mb-5">
         <div class="col-12 col-md-8 offset-md-2">
             <h3 class="mb-3">Add a New Listing</h3>
-            <form action="/listings" method="POST" enctype="multipart/form-data">
+            <form class="needs-validation" action="/listings" method="POST" enctype="multipart/form-data" novalidate>
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" id="title" name="listing[title]" class="form-control" required
                         placeholder="Enter title">
+                    <div class="valid-feedback">
+                        Title Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a title.
+                    </div>
                 </div>
 
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea id="description" name="listing[description]" class="form-control" rows="5" required
                         placeholder="Enter description"></textarea>
+                    <div class="valid-feedback">
+                        Description Looks good!
+                    </div>
+                    <div class="invalid-feedback">
+                        Please provide a description.
+                    </div>
                 </div>
 
                 <div class="row">
@@ -21,12 +33,24 @@
                         <label for="location" class="form-label">Location</label>
                         <input type="text" id="location" name="listing[location]" class="form-control" required
                             placeholder="Enter location">
+                        <div class="valid-feedback">
+                            Location Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Location should be valid.
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="country" class="form-label">Country</label>
                         <input type="text" id="country" name="listing[country]" class="form-control" required
-                            placeholder="Enter country">
+                            placeholder="Enter country" value="Bangladesh">
+                        <div class="valid-feedback">
+                            Country is valid!
+                        </div>
+                        <div class="invalid-feedback">
+                            Country name should be valid.
+                        </div>
                     </div>
                 </div>
 
@@ -36,11 +60,19 @@
                         <label for="price" class="form-label">Price per night</label>
                         <input type="number" id="price" name="listing[price]" class="form-control" required
                             placeholder="Enter price">
+
+                        <div class="valid-feedback">
+                            Price is valid!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a price.
+                        </div>
                     </div>
 
                     <div class="col-md-6 mb-3">
                         <label for="image" class="form-label">Image</label>
                         <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                        <div class="form-text text-muted">Image is optional for now. You can skip this field.</div>
                     </div>
                 </div>
 

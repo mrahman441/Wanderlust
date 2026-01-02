@@ -3,6 +3,9 @@ const router = express.Router();
 const Listing = require('../models/listing.js');
 const multer = require('multer');
 const path = require('path');
+const wrapAsync = require('../utils/wrapAsync.js');
+const ExpressError = require('../utils/ExpressError.js');
+const validateListing = require('../utils/validate.js');
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({
@@ -28,41 +31,40 @@ const upload = multer({
     }
 });
 
-// Route to get all listings
+/// show all listings
 // API: GET /listings
-router.get('/', async (req, res) => {
+router.get('/', wrapAsync(async (req, res) => {
     let listings = await Listing.find({});
     res.render("./listings/index.ejs", { listings });
-});
+}));
 
-// Route to create a new listing
+/// new listing form
 // API: GET /listings/new
 router.get('/new', (req, res) => {
     res.render("./listings/new.ejs");
 });
 
-// Route to handle new listing form submission
+/// create listing
 // API: POST /listings
-router.post('/', upload.single('image'), async (req, res) => {
+// validated using joi schema
+router.post('/', upload.single('image'), validateListing, wrapAsync(async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
-    if (req.file) {
-        newListing.image = '/uploads/' + req.file.filename;
-    }
+    if (req.file) { newListing.image = '/uploads/' + req.file.filename; }
     await newListing.save();
     res.redirect('/listings');
-});
+}));
 
-// Edit listing
+/// Edit listing
 // API: GET /listings/:id/edit
-router.get('/:id/edit', async (req, res) => {
+router.get('/:id/edit', wrapAsync(async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
     res.render("./listings/edit.ejs", { listing });
-});
+}));
 
-// Update listing
+/// Update listing
 // API: PUT /listings/:id
-router.put('/:id', upload.single('image'), async (req, res) => {
+router.put('/:id', upload.single('image'), validateListing, wrapAsync(async (req, res) => {
     const { id } = req.params;
     const updateData = { ...req.body.listing };
     if (req.file) {
@@ -70,22 +72,21 @@ router.put('/:id', upload.single('image'), async (req, res) => {
     }
     await Listing.findByIdAndUpdate(id, updateData);
     res.redirect(`/listings/${id}`);
-});
+}));
 
-// Delete listing
+/// Delete listing
 // API: DELETE /listings/:id
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
     res.redirect('/listings');
-});
+}));
 
-// Route to get a specific listing by ID
+/// Show listing details
 // API: GET /listings/:id
-router.get('/:id', async (req, res) => {
+router.get('/:id', wrapAsync(async (req, res) => {
     const { id } = req.params;
     let listing = await Listing.findById(id);
     res.render("./listings/show.ejs", { listing });
-});
-
+}));
 module.exports = router;
