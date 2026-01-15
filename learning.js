@@ -14,3 +14,6 @@ console.log(number.toLocaleString("en-BD")); // Output: 10,000
 // to validate our data before saving to database we can use joi npm package
 // to install joi: npm install joi
 // see schema.js and utils/validate.js and routes/listings.js for implementation
+
+// pull operator: it helps us to remove items from an array field in mongoose
+// see routes/listings.js delete review for implementation
