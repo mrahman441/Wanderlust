@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const Review = require("./review");
 const imgLink = "https://images.unsplash.com/photo-1506953823976-52e1fdc0149a?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
 const listingSchema = new mongoose.Schema({
@@ -28,6 +29,13 @@ const listingSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Review",
+        },
+    ]
 });
 
 const Listing = mongoose.model("Listing", listingSchema);

@@ -28,5 +28,63 @@
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </div>
+
+            <!-- Reviews Section -->
+            <div class="mt-5">
+                <h4 class="mb-3">Leave a Review</h4>
+                <form action="/listings/<%= listing._id %>/reviews" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="reviewRating" class="form-label">Rating</label>
+                        <input type="range" class="form-range" id="reviewRating" name="review[ratings]" min="1" max="5"
+                            step="1" value="3" oninput="this.nextElementSibling.value = this.value + ' ⭐'">
+                        <output>3 <i class="fa-solid fa-star text-warning"></i></output>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reviewText" class="form-label">Your Review</label>
+                        <textarea class="form-control" id="reviewText" name="review[comments]" rows="3"
+                            required></textarea>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        <div class="invalid-feedback">
+                            Please provide a review comment.
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-dark">Submit Review</button>
+                </form>
+            </div>
+            <hr>
+
+            <!-- Reviews List -->
+            <div class="mt-5">
+                <h4 class="mb-3">All Reviews (<%= listing.reviews.length %>)</h4>
+                <% if (listing.reviews.length===0) { %>
+                    <div class="alert alert-info" role="alert">
+                        <i class="fas fa-info-circle"></i> No reviews yet. Be the first to review!
+                    </div>
+                    <% } else { %>
+                        <div class="row g-3">
+                            <% listing.reviews.forEach(review=> { %>
+                                <div class="col-md-4">
+                                    <div class="card border h-100 p-3">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Mahbub</h5>
+                                            <p class="card-text">
+                                                <%= review.comments %>
+                                            </p>
+                                            <p class="card-text">
+                                                <%= review.ratings %>
+                                                    <% for(let i=0; i < review.ratings; i++) { %>
+                                                        <i class="fa-solid fa-star text-warning"></i>
+                                                        <% } %>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }) %>
+                        </div>
+                        <% } %>
+            </div>
         </div>
     </div>
