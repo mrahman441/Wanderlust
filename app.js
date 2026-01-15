@@ -24,7 +24,7 @@ app.engine("ejs", ejsMate); // ejs-mate for layouts
 app.use("/listings", listings);
 
 // page not found routes
-app.all(/.*/, (req, res, next) => {
+app.use((req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
 });
 
