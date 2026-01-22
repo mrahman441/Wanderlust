@@ -85,26 +85,4 @@ router.get('/:id', wrapAsync(async (req, res) => {
     res.render("./listings/show.ejs", { listing });
 }));
 
-
-/// add review
-router.post('/:id/reviews', validateReview, wrapAsync(async (req, res) => {
-    const listing = await Listing.findById(req.params.id).populate('reviews');
-    const review = new Review(req.body.review);
-    listing.reviews.push(review);
-
-    await review.save();
-    await listing.save(); // Save the listing with the new review
-
-    res.redirect(`/listings/${listing._id}`);
-}));
-
-/// delete review
-router.delete('/:id/reviews/:reviewId', wrapAsync(async (req, res) => {
-    const { id, reviewId } = req.params;
-    await Listing.findByIdAndUpdate(id, { $pull: { reviews: reviewId } });
-    await Review.findByIdAndDelete(reviewId);
-    res.redirect(`/listings/${id}`);
-}));
-
-
 module.exports = router;

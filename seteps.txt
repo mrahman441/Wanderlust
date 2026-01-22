@@ -1,4 +1,6 @@
 To develop a project following steps are done:
 1. Set up EJS Mate for templating.
 2. Install and set up Joi for data validation.
-3. 
+3. handle async errors using a custom utility function.
+4. Create custom error classes for better error handling.
+5. Handle database relationships using Mongoose population.

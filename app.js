@@ -7,9 +7,9 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const errorHandler = require("./utils/errorHandler.js");
 
-
 // import routes
 const listings = require("./routes/listings.js");
+const reviews = require("./routes/reviews.js");
 
 // Middleware setup
 app.set("view engine", "ejs");
@@ -22,6 +22,7 @@ app.engine("ejs", ejsMate); // ejs-mate for layouts
 
 // api routes
 app.use("/listings", listings);
+app.use("/listings/:id/reviews", reviews);
 
 // page not found routes
 app.use((req, res, next) => {
