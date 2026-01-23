@@ -1,5 +1,5 @@
 const express = require('express');
-const router = express.Router({ mergeParams: true });
+const router = express.Router({ mergeParams: true }); // mergeParams to access :id from parent route
 const wrapAsync = require('../utils/wrapAsync.js');
 const { validateReview } = require('../utils/validate.js');
 
