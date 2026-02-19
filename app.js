@@ -6,6 +6,8 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const errorHandler = require("./utils/errorHandler.js");
+const session = require("express-session");
+const flash = require("connect-flash");
 
 // import routes
 const listings = require("./routes/listings.js");
@@ -19,6 +21,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate); // ejs-mate for layouts
 
+app.use(session({
+    secret: "riarianaurmiprity",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
+        maxAge: 1000 * 60 * 60 * 24 * 7,
+        httpOnly: true,
+    }
+}));
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.success = req.flash("success");
+    res.locals.error = req.flash("error");
+    next();
+});
 
 // api routes
 app.use("/listings", listings);

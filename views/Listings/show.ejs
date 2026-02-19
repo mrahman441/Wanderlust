@@ -34,6 +34,7 @@
                 <h4 class="mb-3">Leave a Review</h4>
                 <form action="/listings/<%= listing._id %>/reviews" method="POST" class="needs-validation" novalidate>
                     <div class="mb-3">
+                        <!-- see script.js for implementation -->
                         <label for="reviewRating" class="form-label">Rating</label>
                         <div class="star-rating">
                             <input type="hidden" id="reviewRating" name="review[ratings]" value="3" required>
@@ -79,9 +80,9 @@
                                                 <%= review.comments %>
                                             </p>
                                             <p class="card-text">
-                                                    <% for(let i=0; i < review.ratings; i++) { %>
-                                                        <i class="fa-solid fa-star text-warning"></i>
-                                                        <% } %>
+                                                <% for(let i=0; i < review.ratings; i++) { %>
+                                                    <i class="fa-solid fa-star text-warning"></i>
+                                                    <% } %>
                                             </p>
                                         </div>
                                         <form

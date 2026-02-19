@@ -50,6 +50,7 @@ router.post('/', upload.single('image'), validateListing, wrapAsync(async (req, 
     const newListing = new Listing(req.body.listing);
     if (req.file) { newListing.image = '/uploads/' + req.file.filename; }
     await newListing.save();
+    req.flash("success", "Listing created successfully!");
     res.redirect('/listings');
 }));
 
@@ -57,6 +58,12 @@ router.post('/', upload.single('image'), validateListing, wrapAsync(async (req, 
 router.get('/:id/edit', wrapAsync(async (req, res) => {
     const { id } = req.params;
     const listing = await Listing.findById(id);
+
+    if (!listing) {
+        req.flash("error", "Listing not found!");
+        return res.redirect("/listings");
+    }
+
     res.render("./listings/edit.ejs", { listing });
 }));
 
@@ -68,6 +75,7 @@ router.put('/:id', upload.single('image'), validateListing, wrapAsync(async (req
         updateData.image = '/uploads/' + req.file.filename;
     }
     await Listing.findByIdAndUpdate(id, updateData);
+    req.flash("success", "Listing updated successfully!");
     res.redirect(`/listings/${id}`);
 }));
 
@@ -75,6 +83,7 @@ router.put('/:id', upload.single('image'), validateListing, wrapAsync(async (req
 router.delete('/:id', wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
+    req.flash("success", "Listing deleted successfully!");
     res.redirect('/listings');
 }));
 
@@ -82,6 +91,12 @@ router.delete('/:id', wrapAsync(async (req, res) => {
 router.get('/:id', wrapAsync(async (req, res) => {
     const { id } = req.params;
     let listing = await Listing.findById(id).populate('reviews');
+
+    if (!listing) {
+        req.flash("error", "Listing not found!");
+        return res.redirect("/listings");
+    }
+
     res.render("./listings/show.ejs", { listing });
 }));
 

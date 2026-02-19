@@ -1,0 +1,209 @@
+<!-- Shared Flash Modal Styles (always loaded) -->
+<style>
+    .flash-modal {
+        border: none;
+        border-radius: 1.2rem;
+        overflow: hidden;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        animation: flashSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes flashSlideUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px) scale(0.96);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .flash-icon-wrapper {
+        padding-top: 2rem;
+        display: flex;
+        justify-content: center;
+    }
+
+    .flash-icon-circle {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #222, #111);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .flash-checkmark {
+        width: 44px;
+        height: 44px;
+    }
+
+    .flash-checkmark-circle {
+        stroke: rgba(255, 255, 255, 0.25);
+        stroke-width: 2;
+        stroke-dasharray: 166;
+        stroke-dashoffset: 166;
+        animation: flashStroke 0.6s 0.3s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .flash-checkmark-check {
+        stroke: #fff;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-dasharray: 48;
+        stroke-dashoffset: 48;
+        animation: flashStroke 0.4s 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    @keyframes flashStroke {
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    .flash-body {
+        padding: 1.5rem 2rem 0.5rem;
+    }
+
+    .flash-title {
+        font-weight: 700;
+        font-size: 1.5rem;
+        color: #222;
+        margin-bottom: 0.4rem;
+    }
+
+    .flash-message {
+        color: #717171;
+        font-size: 1.05rem;
+        margin-bottom: 0;
+        line-height: 1.5;
+    }
+
+    .flash-footer {
+        padding: 1rem 2rem 2rem;
+    }
+
+    .flash-btn {
+        background: linear-gradient(135deg, #222, #111);
+        color: #fff;
+        border: none;
+        border-radius: 0.65rem;
+        padding: 0.65rem 2.5rem;
+        font-size: 1.05rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        transition: all 0.25s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .flash-btn:hover {
+        background: linear-gradient(135deg, #333, #111);
+        color: #fff;
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .flash-btn:active {
+        transform: translateY(0);
+    }
+
+    /* Error-specific styles */
+    .flash-icon-error {
+        background: linear-gradient(135deg, #dc3545, #b02a37) !important;
+        box-shadow: 0 8px 25px rgba(220, 53, 69, 0.35) !important;
+    }
+
+    .flash-error-x {
+        stroke: #fff;
+        stroke-width: 3;
+        stroke-linecap: round;
+        stroke-dasharray: 28;
+        stroke-dashoffset: 28;
+        animation: flashStroke 0.4s 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+    }
+
+    .flash-btn-error {
+        background: linear-gradient(135deg, #dc3545, #b02a37) !important;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3) !important;
+    }
+
+    .flash-btn-error:hover {
+        background: linear-gradient(135deg, #b02a37, #96222e) !important;
+        box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4) !important;
+    }
+</style>
+
+<% if (success && success.length> 0) { %>
+    <!-- Success Flash Modal -->
+    <div class="modal fade" id="flashModal" tabindex="-1" aria-labelledby="flashModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content flash-modal">
+                <div class="flash-icon-wrapper">
+                    <div class="flash-icon-circle">
+                        <svg class="flash-checkmark" viewBox="0 0 52 52">
+                            <circle class="flash-checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                            <path class="flash-checkmark-check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="flash-body">
+                    <h4 class="flash-title">Success!</h4>
+                    <p class="flash-message">
+                        <%= success %>
+                    </p>
+                </div>
+                <div class="flash-footer">
+                    <button type="button" class="btn flash-btn" data-bs-dismiss="modal">Continue</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const flashModal = new bootstrap.Modal(document.getElementById('flashModal'));
+            flashModal.show();
+        });
+    </script>
+    <% } %>
+
+        <% if (error && error.length> 0) { %>
+            <!-- Error Flash Modal -->
+            <div class="modal fade" id="flashErrorModal" tabindex="-1" aria-labelledby="flashErrorModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content flash-modal">
+                        <div class="flash-icon-wrapper">
+                            <div class="flash-icon-circle flash-icon-error">
+                                <svg class="flash-checkmark" viewBox="0 0 52 52">
+                                    <circle class="flash-checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+                                    <path class="flash-error-x" fill="none" d="M16 16 36 36" />
+                                    <path class="flash-error-x" fill="none" d="M36 16 16 36" />
+                                </svg>
+                            </div>
+                        </div>
+                        <div class="flash-body">
+                            <h4 class="flash-title">Oops!</h4>
+                            <p class="flash-message">
+                                <%= error %>
+                            </p>
+                        </div>
+                        <div class="flash-footer">
+                            <button type="button" class="btn flash-btn flash-btn-error"
+                                data-bs-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    const errorModal = new bootstrap.Modal(document.getElementById('flashErrorModal'));
+                    errorModal.show();
+                });
+            </script>
+            <% } %>
