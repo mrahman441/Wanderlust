@@ -1,0 +1,39 @@
+<% layout('./layouts/boilerplate') -%>
+    <div class="auth-page">
+        <div class="row w-100">
+            <div class="col-md-6 offset-md-3 mb-3">
+                <h2 class="mb-0 mt-3 text-center">Sign Up</h2>
+                <p class="text-muted text-center">Sign up to Wanderlust</p>
+                <form action="/signup" method="POST" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" id="username" name="username"
+                            class="form-control <%= typeof signupError !== 'undefined' ? 'is-invalid' : '' %>"
+                            value="<%= typeof username !== 'undefined' ? username : '' %>" required
+                            placeholder="Your username">
+                        <div class="invalid-feedback">
+                            <%= typeof signupError !=='undefined' ? signupError : 'Please enter a username' %>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control"
+                            value="<%= typeof email !== 'undefined' ? email : '' %>" required placeholder="Your email">
+                        <div class="invalid-feedback">Please enter a valid email</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" id="password" name="password" class="form-control"
+                            value="<%= typeof password !== 'undefined' ? password : '' %>" required
+                            placeholder="Your password">
+                        <div class="invalid-feedback">Please enter a password</div>
+                    </div>
+                    <button type="submit" class="btn btn-success w-100 mb-3">Sign Up</button>
+                    <p class="text-muted text-center">Already have an account? <a class="text-black"
+                            href="/login">Login</a>
+                    </p>
+
+                </form>
+            </div>
+        </div>
+    </div>

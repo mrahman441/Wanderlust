@@ -8,10 +8,17 @@ const ExpressError = require("./utils/ExpressError.js");
 const errorHandler = require("./utils/errorHandler.js");
 const session = require("express-session");
 const flash = require("connect-flash");
+const passport = require("passport");
+const LocalStrategy = require("passport-local"); // for authentication
+const passportLocalMongoose = require("passport-local-mongoose");
+
+// import model
+const User = require("./models/user.js");
 
 // import routes
 const listings = require("./routes/listings.js");
 const reviews = require("./routes/reviews.js");
+const user = require("./routes/user.js");
 
 // Middleware setup
 app.set("view engine", "ejs");
@@ -32,6 +39,11 @@ app.use(session({
     }
 }));
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new LocalStrategy(User.authenticate())); // User is model
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
@@ -42,6 +54,7 @@ app.use((req, res, next) => {
 // api routes
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
+app.use("/", user);
 
 // page not found routes
 app.use((req, res, next) => {
