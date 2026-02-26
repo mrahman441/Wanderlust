@@ -4,7 +4,7 @@
             <div class="col-md-4 offset-md-4 mb-3">
                 <h2 class="mb-0 mt-3 text-center">Sign Up</h2>
                 <p class="text-muted text-center">Sign up to Wanderlust</p>
-                <form action="/signup" method="POST" class="needs-validation" novalidate>
+                <form action="/auth/signup" method="POST" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" id="username" name="username"
@@ -30,7 +30,7 @@
                     </div>
                     <button type="submit" class="btn btn-success w-100 mb-3">Sign Up</button>
                     <p class="text-muted text-center">Already have an account? <a class="text-black"
-                            href="/login">Login</a>
+                            href="/auth/login">Login</a>
                     </p>
 
                 </form>

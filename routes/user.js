@@ -42,7 +42,8 @@ router.post("/login", (req, res, next) => {
         if (err) return next(err);
         if (!user) {
             return res.render("users/login", {
-                loginError: info.message,
+                loginError: info.message, // send the error message
+                // send back the username and password to the form so that user doesn't have to re-enter them.
                 username: req.body.username,
                 password: req.body.password
             });

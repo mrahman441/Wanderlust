@@ -10,7 +10,6 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local"); // for authentication
-const passportLocalMongoose = require("passport-local-mongoose");
 
 // import model
 const User = require("./models/user.js");
@@ -39,6 +38,7 @@ app.use(session({
     }
 }));
 app.use(flash());
+
 app.use(passport.initialize());
 app.use(passport.session());
 passport.use(new LocalStrategy(User.authenticate())); // User is model
@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 // api routes
 app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
-app.use("/", user);
+app.use("/auth", user);
 
 // page not found routes
 app.use((req, res, next) => {

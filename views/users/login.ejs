@@ -4,7 +4,7 @@
             <div class="col-md-4 offset-md-4 mb-3">
                 <h2 class="mb-0 mt-3 text-center">Login</h2>
                 <p class="text-muted text-center">Login to your account</p>
-                <form action="/login" method="POST" class="needs-validation" novalidate>
+                <form action="/auth/login" method="POST" class="needs-validation" novalidate>
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
                         <input type="text" id="username" name="username"
@@ -24,7 +24,7 @@
                     </div>
                     <button type="submit" class="btn btn-success w-100 mb-3">Login</button>
                     <p class="text-muted text-center">Don't have an account? <a class="text-black"
-                            href="/signup">SignUp</a>
+                            href="/auth/signup">SignUp</a>
                     </p>
 
                 </form>
