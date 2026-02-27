@@ -5,7 +5,7 @@ const path = require('path');
 
 const wrapAsync = require('../utils/wrapAsync.js');
 const { validateListing } = require('../utils/validate.js');
-const { isLoggedIn } = require('../middleware.js');
+const { isLoggedIn, isOwner } = require('../middleware.js');
 
 // import models
 const Listing = require('../models/listing.js');
@@ -51,6 +51,7 @@ router.get('/new', isLoggedIn, (req, res) => { // only logged in users can creat
 // validated using joi schema
 router.post('/', upload.single('image'), isLoggedIn, validateListing, wrapAsync(async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
+    newListing.owner = req.user._id; // set the owner of the listing to the currently logged in user
     if (req.file) { newListing.image = '/uploads/' + req.file.filename; }
     await newListing.save();
     req.flash("success", "Listing created successfully!");
@@ -58,32 +59,36 @@ router.post('/', upload.single('image'), isLoggedIn, validateListing, wrapAsync(
 }));
 
 /// Edit listing
-router.get('/:id/edit', isLoggedIn, wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    const listing = await Listing.findById(id);
+router.get('/:id/edit',
+    isLoggedIn, isOwner,
+    wrapAsync(async (req, res) => {
+        const { id } = req.params;
+        const listing = await Listing.findById(id);
 
-    if (!listing) {
-        req.flash("error", "Listing not found!");
-        return res.redirect("/listings");
-    }
+        if (!listing) {
+            req.flash("error", "Listing not found!");
+            return res.redirect("/listings");
+        }
 
-    res.render("./listings/edit.ejs", { listing });
-}));
+        res.render("./listings/edit.ejs", { listing });
+    }));
 
 /// Update listing
-router.put('/:id', upload.single('image'), isLoggedIn, validateListing, wrapAsync(async (req, res) => {
-    const { id } = req.params;
-    const updateData = { ...req.body.listing };
-    if (req.file) {
-        updateData.image = '/uploads/' + req.file.filename;
-    }
-    await Listing.findByIdAndUpdate(id, updateData);
-    req.flash("success", "Listing updated successfully!");
-    res.redirect(`/listings/${id}`);
-}));
+router.put('/:id',
+    isLoggedIn, isOwner,
+    upload.single('image'), isLoggedIn, validateListing, wrapAsync(async (req, res) => {
+        const { id } = req.params;
+        const updateData = { ...req.body.listing };
+        if (req.file) {
+            updateData.image = '/uploads/' + req.file.filename;
+        }
+        await Listing.findByIdAndUpdate(id, updateData);
+        req.flash("success", "Listing updated successfully!");
+        res.redirect(`/listings/${id}`);
+    }));
 
 /// Delete listing
-router.delete('/:id', isLoggedIn, wrapAsync(async (req, res) => {
+router.delete('/:id', isLoggedIn, isOwner, wrapAsync(async (req, res) => {
     const { id } = req.params;
     await Listing.findByIdAndDelete(id);
     req.flash("success", "Listing deleted successfully!");
@@ -93,7 +98,7 @@ router.delete('/:id', isLoggedIn, wrapAsync(async (req, res) => {
 /// Show listing details
 router.get('/:id', wrapAsync(async (req, res) => {
     const { id } = req.params;
-    let listing = await Listing.findById(id).populate('reviews');
+    let listing = await Listing.findById(id).populate({ path: 'reviews', populate: { path: 'author' } }).populate('owner');
 
     if (!listing) {
         req.flash("error", "Listing not found!");

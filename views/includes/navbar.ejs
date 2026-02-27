@@ -7,11 +7,19 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNavAltMarkup">
-            <div class="navbar-nav ms-auto">
+            <div class="navbar-nav">
                 <a class="nav-link" href="/listings">Home</a>
                 <a class="nav-link" href="/listings">All Listings</a>
                 <a class="nav-link" href="/listings/new">Add new listings</a>
-                <a class="nav-link" href="/auth/login">Login</a>
+            </div>
+            <div class="navbar-nav ms-auto">
+                <% if(!currentUser){ %>
+                    <a class="nav-link" href="/auth/login">Login</a>
+                    <% } else { %>
+                        <span class="nav-link"><%= currentUser.username %></span>
+                        <a class="nav-link disabled" href="">|</a>
+                        <a class="nav-link" href="/auth/logout">Logout</a>
+                    <% } %>
             </div>
         </div>
     </div>
@@ -47,7 +55,10 @@
                     <i class="fa-solid fa-right-to-bracket"></i> Login
                 </a>
             </li>
-
+            <li class="nav-item">
+                <a class="nav-link text-dark" href="/auth/logout">
+                    <i class="fa-solid fa-right-from-bracket"></i> Logout
+                </a>
         </ul>
     </div>
 </div>
