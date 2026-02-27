@@ -19,7 +19,7 @@ router.post("/signup", wrapAsync(async (req, res) => {
         // automatically log in the user after signing up
         req.login(registeredUser, (err) => {
             if (err) return next(err);
-            req.flash("success", "Welcome to Wanderlust!");
+            // req.flash("success", "Welcome to Wanderlust!");
             res.redirect("/listings");
         });
     } catch (e) {
@@ -57,7 +57,7 @@ router.post("/login",
             }
             req.logIn(user, (err) => {
                 if (err) return next(err);
-                req.flash("success", "Welcome to Wanderlust!");
+                // req.flash("success", "Welcome to Wanderlust!");
                 res.redirect(res.locals.returnTo || "/listings"); // redirect to the url they are requesting before login
             });
         })(req, res, next);
