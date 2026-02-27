@@ -85,9 +85,21 @@
                                                 <div class="col-md-4">
                                                     <div class="card border h-100 p-3">
                                                         <div class="card-body">
-                                                            <h5 class="card-title">
-                                                                @<%= review.author.username %>
-                                                            </h5>
+                                                            <div
+                                                                class="d-flex justify-content-between align-items-center mb-2">
+                                                                <h5 class="card-title mb-0">
+                                                                    @<%= review.author.username %>
+                                                                </h5>
+                                                                <% if(currentUser &&
+                                                                    currentUser._id.equals(review.author._id)) { %>
+                                                                    <form
+                                                                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                                                        method="POST" class="d-inline">
+                                                                        <button type="submit" class="btn btn-danger"
+                                                                            style="font-size: 0.7rem; padding: 0.15rem 0.4rem;">Delete</button>
+                                                                    </form>
+                                                                    <% } %>
+                                                            </div>
                                                             <p class="card-text">
                                                                 <%= review.comments %>
                                                             </p>
@@ -97,12 +109,6 @@
                                                                     <% } %>
                                                             </p>
                                                         </div>
-                                                        <form
-                                                            action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-                                                            method="POST">
-                                                            <button type="submit"
-                                                                class="btn btn-sm btn-danger mt-2">Delete</button>
-                                                        </form>
                                                     </div>
                                                 </div>
                                                 <% }) %>

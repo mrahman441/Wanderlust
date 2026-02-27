@@ -7,6 +7,8 @@
         text-align: center;
         box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         animation: flashSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        max-width: 320px;
+        margin: auto;
     }
 
     @keyframes flashSlideUp {
@@ -22,14 +24,14 @@
     }
 
     .flash-icon-wrapper {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
         display: flex;
         justify-content: center;
     }
 
     .flash-icon-circle {
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
         border-radius: 50%;
         background: linear-gradient(135deg, #222, #111);
         display: flex;
@@ -39,8 +41,8 @@
     }
 
     .flash-checkmark {
-        width: 44px;
-        height: 44px;
+        width: 34px;
+        height: 34px;
     }
 
     .flash-checkmark-circle {
@@ -48,7 +50,7 @@
         stroke-width: 2;
         stroke-dasharray: 166;
         stroke-dashoffset: 166;
-        animation: flashStroke 0.6s 0.3s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        animation: flashStroke 0.4s 0.1s cubic-bezier(0.65, 0, 0.45, 1) forwards;
     }
 
     .flash-checkmark-check {
@@ -58,7 +60,7 @@
         stroke-linejoin: round;
         stroke-dasharray: 48;
         stroke-dashoffset: 48;
-        animation: flashStroke 0.4s 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        animation: flashStroke 0.3s 0.3s cubic-bezier(0.65, 0, 0.45, 1) forwards;
     }
 
     @keyframes flashStroke {
@@ -68,25 +70,25 @@
     }
 
     .flash-body {
-        padding: 1.5rem 2rem 0.5rem;
+        padding: 1rem 1.5rem 0.5rem;
     }
 
     .flash-title {
         font-weight: 700;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         color: #222;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.3rem;
     }
 
     .flash-message {
         color: #717171;
-        font-size: 1.05rem;
+        font-size: 0.95rem;
         margin-bottom: 0;
         line-height: 1.5;
     }
 
     .flash-footer {
-        padding: 1rem 2rem 2rem;
+        padding: 0.75rem 1.5rem 1.5rem;
     }
 
     .flash-btn {
@@ -115,7 +117,7 @@
 
     /* Error-specific styles */
     .flash-icon-error {
-        background: linear-gradient(135deg, #dc3545, #b02a37) !important;
+        background: #dc3545 !important;
         box-shadow: 0 8px 25px rgba(220, 53, 69, 0.35) !important;
     }
 
@@ -125,16 +127,16 @@
         stroke-linecap: round;
         stroke-dasharray: 28;
         stroke-dashoffset: 28;
-        animation: flashStroke 0.4s 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+        animation: flashStroke 0.3s 0.2s cubic-bezier(0.65, 0, 0.45, 1) forwards;
     }
 
     .flash-btn-error {
-        background: linear-gradient(135deg, #dc3545, #b02a37) !important;
+        background: #dc3545 !important;
         box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3) !important;
     }
 
     .flash-btn-error:hover {
-        background: linear-gradient(135deg, #b02a37, #96222e) !important;
+        background: #b02a37 !important;
         box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4) !important;
     }
 </style>

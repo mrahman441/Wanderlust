@@ -16,10 +16,12 @@
                 <% if(!currentUser){ %>
                     <a class="nav-link" href="/auth/login">Login</a>
                     <% } else { %>
-                        <span class="nav-link"><%= currentUser.username %></span>
+                        <span class="nav-link">
+                            <%= currentUser.username %>
+                        </span>
                         <a class="nav-link disabled" href="">|</a>
                         <a class="nav-link" href="/auth/logout">Logout</a>
-                    <% } %>
+                        <% } %>
             </div>
         </div>
     </div>
@@ -50,15 +52,25 @@
                     <i class="fa-solid fa-plus"></i> Add new listings
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="/auth/login">
-                    <i class="fa-solid fa-right-to-bracket"></i> Login
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="/auth/logout">
-                    <i class="fa-solid fa-right-from-bracket"></i> Logout
-                </a>
+            <% if(!currentUser){ %>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/auth/login">
+                        <i class="fa-solid fa-right-to-bracket"></i> Login
+                    </a>
+                </li>
+                <% } else { %>
+                    <li class="nav-item">
+                        <span class="nav-link text-dark">
+                            <i class="fa-solid fa-user"></i>
+                            <%= currentUser.username %>
+                        </span>
+                    </li>
+                    <% } %>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="/auth/logout">
+                                <i class="fa-solid fa-right-from-bracket"></i> Logout
+                            </a>
+                        </li>
         </ul>
     </div>
 </div>
