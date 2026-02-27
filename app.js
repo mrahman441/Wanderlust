@@ -80,5 +80,5 @@ async function main() {
 }
 
 app.listen(8080, () => {
-    console.log("Server is running on: http://localhost:8080");
+    console.log("Server is running on: http://localhost:8080/listings");
 })
