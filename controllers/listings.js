@@ -44,12 +44,20 @@ module.exports.renderEditForm = async (req, res) => {
         return res.redirect("/listings");
     }
 
+    listing.image.url = listing.image.url.replace(/\/upload\//, '/upload/w_100/'); // reduce img size for preview
     res.render("./listings/edit.ejs", { listing });
 }
 
 module.exports.updateListing = async (req, res) => {
     const { id } = req.params;
-    await Listing.findByIdAndUpdate(id, req.body.listing);
+    let listing = await Listing.findByIdAndUpdate(id, req.body.listing);
+
+    const url = req.file ? req.file.path : null;
+    const filename = req.file ? req.file.filename : null;
+    if (url && filename) {
+        listing.image = { url, filename };
+        await listing.save();
+    }
     req.flash("success", "Listing updated successfully!");
     res.redirect(`/listings/${id}`);
 }

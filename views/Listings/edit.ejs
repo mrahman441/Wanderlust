@@ -5,6 +5,7 @@
             <h3 class="mb-3">Edit Listing</h3>
             <form class="needs-validation" action="/listings/<%= listing._id %>?_method=PUT" method="POST"
                 enctype="multipart/form-data" novalidate>
+
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" id="title" name="listing[title]" class="form-control"
@@ -70,9 +71,18 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="image" class="form-label">Image</label>
-                        <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                        <input type="file" id="image" name="listing[image]" class="form-control" accept="image/*">
                         <small class="form-text text-muted">Leave empty to keep current image</small>
                     </div>
+                </div>
+
+                <!-- img preview -->
+                <div class="mb-4">
+                    <% if (listing.image && listing.image.url) { %>
+                        <label class="form-label d-block">Current Image</label>
+                        <img src="<%= listing.image.url %>" class="img-thumbnail" alt="<%= listing.title %>"
+                            style="max-width: 200px; max-height: 200px; object-fit: cover;">
+                        <% } %>
                 </div>
 
                 <button type="submit" class="btn btn-dark">Update Listing</button>
