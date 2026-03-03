@@ -25,7 +25,6 @@ module.exports.showListing = async (req, res) => {
 module.exports.createListing = async (req, res, next) => {
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id; // set the owner of the listing to the currently logged in user
-    if (req.file) { newListing.image = '/uploads/' + req.file.filename; }
     await newListing.save();
     req.flash("success", "Listing created successfully!");
     res.redirect('/listings');
@@ -45,11 +44,7 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateListing = async (req, res) => {
     const { id } = req.params;
-    const updateData = { ...req.body.listing };
-    if (req.file) {
-        updateData.image = '/uploads/' + req.file.filename;
-    }
-    await Listing.findByIdAndUpdate(id, updateData);
+    await Listing.findByIdAndUpdate(id, req.body.listing);
     req.flash("success", "Listing updated successfully!");
     res.redirect(`/listings/${id}`);
 }
