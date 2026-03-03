@@ -12,10 +12,8 @@ const listingSchema = new mongoose.Schema({
         required: true,
     },
     image: {
-        type: String,
-        // setting default img if user don't provide any img
-        set: (v) => v === "" ? imgLink : v, // this is for form perspective
-        default: imgLink, // this for normal hard coded data push
+        url: String,
+        filename: String,
     },
     price: {
         type: Number,

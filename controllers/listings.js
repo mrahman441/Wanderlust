@@ -23,8 +23,13 @@ module.exports.showListing = async (req, res) => {
 }
 
 module.exports.createListing = async (req, res, next) => {
+    const url = req.file ? req.file.path : null; // get the image URL from Cloudinary
+    const filename = req.file ? req.file.filename : null; // get the image filename from Cloudinary
     const newListing = new Listing(req.body.listing);
     newListing.owner = req.user._id; // set the owner of the listing to the currently logged in user
+    if (url && filename) {
+        newListing.image = { url, filename };
+    }
     await newListing.save();
     req.flash("success", "Listing created successfully!");
     res.redirect('/listings');

@@ -5,8 +5,9 @@ const wrapAsync = require('../utils/wrapAsync.js');
 const { validateListing } = require('../utils/validate.js');
 const { isLoggedIn, isOwner } = require('../middleware.js');
 
+const { storage } = require('../cloudConfig.js');
 const multer = require('multer')
-const upload = multer({ dest: 'uploads/' })
+const upload = multer({ storage });
 
 // import controllers
 const listings = require('../controllers/listings.js');
