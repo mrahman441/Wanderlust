@@ -107,3 +107,10 @@ body>.container {
     margin-bottom: 1rem;
     object-fit: cover;
 }
+
+/* map */
+#map {
+    height: 400px;
+    width: 100%;
+    border-radius: 10px;
+}
