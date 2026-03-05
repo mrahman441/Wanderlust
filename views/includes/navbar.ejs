@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-light shadow-xl sticky-top">
+<nav class="navbar navbar-expand-lg bg-body-light shadow-xl border-bottom sticky-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
         <!-- Left: Brand -->
         <div class="d-flex align-items-center" style="flex: 1;">
@@ -18,11 +18,7 @@
             </form>
         </div>
 
-        <!-- Right: Toggle & Nav Items -->
-        <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas"
-            data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <!-- Right: Nav Items (Desktop) -->
         <div class="collapse navbar-collapse d-none d-lg-flex justify-content-end" id="navbarNavAltMarkup"
             style="flex: 1;">
             <div class="navbar-nav">
@@ -42,59 +38,31 @@
     </div>
 </nav>
 
-<!-- Offcanvas Sidebar for Mobile -->
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar" aria-labelledby="offcanvasSidebarLabel">
-    <div class="offcanvas-header border-bottom">
-        <h5 class="offcanvas-title" id="offcanvasSidebarLabel">
-            <i class="fa-regular fa-compass"></i> Wanderlust
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-        <!-- Search Bar for Mobile -->
-        <div class="mb-3">
-            <form class="d-flex position-relative" role="search">
-                <input class="form-control ps-3 pe-5" type="search" placeholder="Search destinations..."
-                    aria-label="Search" style="border-radius: 10px; background-color: #f8f9fa;">
-                <button class="btn position-absolute end-0 top-0 h-100 d-flex align-items-center" type="submit"
-                    style="background-color: #dee2e6; border: 1px solid #ced4da; border-left: none; padding: 0 0.75rem; border-radius: 0 10px 10px 0;">
-                    <i class="fa-solid fa-magnifying-glass text-dark"></i>
-                </button>
-            </form>
-        </div>
-        <hr class="my-2">
-
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="/listings">
-                    <i class="fa-solid fa-list"></i> Explore
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-dark" href="/listings/new">
-                    <i class="fa-solid fa-plus"></i> Add your home
-                </a>
-            </li>
-            <% if(!currentUser){ %>
-                <li class="nav-item text-dark text-bold">
-                    <a class="nav-link text-dark" href="/auth/login">
-                        <i class="fa-solid fa-right-to-bracket"></i> Login
-                    </a>
-                </li>
-                <% } else { %>
-                    <li class="nav-item text-dark text-bold">
-                        <span class="nav-link text-dark">
-                            <i class="fa-solid fa-user"></i>
-                            <%= currentUser.username %>
-                        </span>
-                    </li>
-
-                    <li class="nav-item text-dark text-bold">
-                        <a class="nav-link text-dark" href="/auth/logout">
-                            <i class="fa-solid fa-right-from-bracket"></i> Logout
-                        </a>
-                        <% } %>
-
-        </ul>
-    </div>
-</div>
+<!-- Bottom Tab Nav for Mobile -->
+<nav class="mobile-bottom-nav d-lg-none">
+    <a href="/listings" class="mobile-bottom-nav-item">
+        <i class="fa-solid fa-list"></i>
+        <span>Explore</span>
+    </a>
+    <a href="/listings/new" class="mobile-bottom-nav-item">
+        <i class="fa-solid fa-plus"></i>
+        <span>Add home</span>
+    </a>
+    <% if(!currentUser){ %>
+        <a href="/auth/login" class="mobile-bottom-nav-item">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span>Login</span>
+        </a>
+        <% } else { %>
+            <a href="#" class="mobile-bottom-nav-item">
+                <i class="fa-solid fa-user"></i>
+                <span>
+                    <%= currentUser.username %>
+                </span>
+            </a>
+            <a href="/auth/logout" class="mobile-bottom-nav-item">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </a>
+            <% } %>
+</nav>
