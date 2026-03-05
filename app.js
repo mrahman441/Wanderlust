@@ -35,7 +35,7 @@ const MongoStore = connectMongo.default || connectMongo;
 const store = MongoStore.create({
     mongoUrl: process.env.ATLASDB_URL, // db url
     crypto: {
-        secret: "riarianaurmisecret",
+        secret: process.env.SECRET,
     },
     touchAfter: 24 * 60 * 60, // time period in seconds to update the session in the database
 })
@@ -46,7 +46,7 @@ store.on("error", (e) => {
 // session configuration for development
 app.use(session({
     store, // for production
-    secret: "riarianaurmisecret",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
