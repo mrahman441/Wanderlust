@@ -5,11 +5,11 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index = async (req, res) => {
     let listings = await Listing.find({});
-    res.render("./listings/index.ejs", { listings });
+    res.render("Listings/index.ejs", { listings });
 }
 
 module.exports.renderNewForm = (req, res) => { // only logged in users can create listing
-    res.render("./listings/new.ejs");
+    res.render("Listings/new.ejs");
 }
 
 module.exports.showListing = async (req, res) => {
@@ -21,7 +21,7 @@ module.exports.showListing = async (req, res) => {
         return res.redirect("/listings");
     }
 
-    res.render("./listings/show.ejs", { listing });
+    res.render("Listings/show.ejs", { listing });
 }
 
 module.exports.createListing = async (req, res, next) => {
@@ -54,7 +54,7 @@ module.exports.renderEditForm = async (req, res) => {
     }
 
     listing.image.url = listing.image.url.replace(/\/upload\//, '/upload/w_100/'); // reduce img size for preview
-    res.render("./listings/edit.ejs", { listing });
+    res.render("Listings/edit.ejs", { listing });
 }
 
 module.exports.updateListing = async (req, res) => {
