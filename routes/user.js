@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const wrapAsync = require("../utils/wrapAsync.js");
-const { storeReturnTo } = require("../middleware.js");
+const { storeReturnTo, isLoggedIn } = require("../middleware.js");
 
 // import controllers
 const users = require("../controllers/users.js");
@@ -14,6 +14,8 @@ router.route('/login')
     .get(users.renderLoginForm)
     .post(storeReturnTo, // redirect to the url they are requesting after loginS
         users.login);
+
+router.get("/profile", isLoggedIn, wrapAsync(users.renderProfile));
 
 router.get("/logout", users.logout);
 

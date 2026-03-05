@@ -56,6 +56,12 @@ module.exports.login = (req, res, next) => {
     })(req, res, next);
 }
 
+module.exports.renderProfile = async (req, res) => {
+    const Listing = require("../models/listing");
+    const listings = await Listing.find({ owner: req.user._id });
+    res.render("users/profile", { listings });
+}
+
 module.exports.logout = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.flash("error", "You are not logged in!");
