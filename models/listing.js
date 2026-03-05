@@ -38,7 +38,7 @@ const listingSchema = new mongoose.Schema({
         ref: "User",
     },
 
-    // using goeJson formate to store the location data
+    // using mongoose goeJson formate to store the location data
     geometry: {
         type: {
             type: String, // Don't do `{ location: { type: String } }`

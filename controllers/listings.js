@@ -28,7 +28,7 @@ module.exports.createListing = async (req, res, next) => {
     let response = await geocodingClient.forwardGeocode({
         query: req.body.listing.location,
         limit: 1
-    }).send();
+    }).send(); // https://github.com/mapbox/mapbox-sdk-js/blob/main/docs/services.md#geocodingv6
 
     const url = req.file ? req.file.path : null; // get the image URL from Cloudinary
     const filename = req.file ? req.file.filename : null; // get the image filename from Cloudinary
