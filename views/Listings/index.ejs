@@ -2,10 +2,11 @@
 
     <body>
         <!-- filter like airbnb -->
-        <div class="d-flex align-items-center py-2 gap-2">
+        <div class="d-flex align-items-center py-2 gap-1">
             <!-- Left Arrow -->
-            <button id="scroll-left" class="btn btn-light rounded-circle shadow-sm scroll-arrow scroll-arrow-left">
-                <i class="fa-solid fa-chevron-left"></i>
+            <button id="scroll-left" class="btn btn-light rounded-circle shadow-sm scroll-arrow scroll-arrow-left p-1 ms-4" 
+                style="width: 32px; height: 32px; flex-shrink: 0;">
+                <i class="fa-solid fa-chevron-left" style="font-size: 0.75rem;"></i>
             </button>
 
             <!-- Filters Container -->
@@ -119,13 +120,14 @@
             </div>
 
             <!-- Right Arrow -->
-            <button id="scroll-right" class="btn btn-light rounded-circle shadow-sm scroll-arrow scroll-arrow-right">
-                <i class="fa-solid fa-chevron-right"></i>
+            <button id="scroll-right" class="btn btn-light rounded-circle shadow-sm scroll-arrow scroll-arrow-right p-1 me-4"
+                style="width: 32px; height: 32px; flex-shrink: 0;">
+                <i class="fa-solid fa-chevron-right" style="font-size: 0.75rem;"></i>
             </button>
 
             <!-- Tax Toggle Switch -->
-            <div class="d-flex align-items-center gap-2 border-start ps-3 pe-2 ms-3" style="min-width: fit-content;">
-                <span class="small fw-semibold text-nowrap">Display total after taxes</span>
+            <div class="d-flex align-items-center gap-2 border-start ps-3 pe-2 ms-2" style="min-width: fit-content;">
+                <span class="small fw-semibold text-nowrap">Add taxes</span>
                 <div class="form-check form-switch mb-0">
                     <input class="form-check-input" type="checkbox" id="taxToggle"
                         style="cursor: pointer; width: 2.5em; height: 1.25em;">

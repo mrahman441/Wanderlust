@@ -1,15 +1,31 @@
 <nav class="navbar navbar-expand-lg bg-body-light border-bottom sticky-top">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
-        <a class="brand-name text-decoration-none text-dark" href="/listings">Wanderlust</a>
-        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="offcanvas"
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+        <!-- Left: Brand -->
+        <div class="d-flex align-items-center" style="flex: 1;">
+            <a class="navbar-brand" href="/listings"><i class="fa-regular fa-compass"></i></a>
+            <a class="brand-name text-decoration-none text-dark" href="/listings">Wanderlust</a>
+        </div>
+
+        <!-- Center: Search Bar for Desktop -->
+        <div class="d-none d-lg-flex justify-content-center" style="flex: 1; max-width: 500px;">
+            <form class="position-relative w-100" role="search">
+                <input class="form-control ps-3 pe-5" type="search" placeholder="Search destinations..."
+                    aria-label="Search" style="border-radius: 10px;">
+                <button class="btn position-absolute end-0 top-50 translate-middle-y me-1" type="submit"
+                    style="background: none; border: none; padding: 0.25rem 0.5rem;">
+                    <i class="fa-solid fa-magnifying-glass text-gray"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Right: Toggle & Nav Items -->
+        <button class="navbar-toggler d-lg-none ms-auto" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse d-none d-lg-flex" id="navbarNavAltMarkup">
+        <div class="collapse navbar-collapse d-none d-lg-flex justify-content-end" id="navbarNavAltMarkup"
+            style="flex: 1;">
             <div class="navbar-nav">
-            </div>
-            <div class="navbar-nav ms-auto">
                 <a class="nav-link" href="/listings">Explore</a>
                 <a class="nav-link" href="/listings/new">Add your home</a>
                 <% if(!currentUser){ %>
@@ -35,6 +51,19 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body">
+        <!-- Search Bar for Mobile -->
+        <div class="mb-3">
+            <form class="d-flex position-relative" role="search">
+                <input class="form-control ps-3 pe-5" type="search" placeholder="Search destinations..."
+                    aria-label="Search" style="border-radius: 10px; background-color: #f8f9fa;">
+                <button class="btn position-absolute end-0 top-50 translate-middle-y me-1" type="submit"
+                    style="background: none; border: none; padding: 0.25rem 0.5rem;">
+                    <i class="fa-solid fa-magnifying-glass text-dark"></i>
+                </button>
+            </form>
+        </div>
+        <hr class="my-2">
+
         <ul class="nav flex-column">
             <li class="nav-item">
                 <a class="nav-link text-dark" href="/listings">
