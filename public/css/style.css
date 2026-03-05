@@ -183,6 +183,11 @@ body>.container {
     border-radius: 10px;
 }
 
+/* Mobile search panel */
+#mobileSearchPanel.open {
+    display: block !important;
+}
+
 /* Mobile bottom tab navigation */
 .mobile-bottom-nav {
     position: fixed;

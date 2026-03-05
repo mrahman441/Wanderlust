@@ -8,12 +8,12 @@
 
         <!-- Center: Search Bar for Desktop -->
         <div class="d-none d-lg-flex justify-content-center" style="flex: 1; max-width: 500px;">
-            <form class="position-relative w-100" role="search">
-                <input class="form-control ps-3 pe-5" type="search" placeholder="Search destinations..."
-                    aria-label="Search" style="border-radius: 10px;">
-                <button class="btn position-absolute end-0 top-0 h-100 d-flex align-items-center" type="submit"
-                    style="background-color: #e9ecef; border: 1px solid #dee2e6; border-left: none; padding: 0 0.75rem; border-radius: 0 10px 10px 0;">
-                    <i class="fa-solid fa-magnifying-glass text-gray"></i>
+            <form class="d-flex w-100 align-items-center gap-2" role="search">
+                <input class="form-control" type="search" placeholder="Search destinations" aria-label="Search"
+                    style="border-radius: 999px; border: 1px solid #dee2e6; padding: 0.5rem 1.25rem;">
+                <button class="btn d-flex align-items-center gap-2 text-white text-nowrap" type="submit"
+                    style="background-color: #ff385c; border-radius: 999px; padding: 0.5rem 1.25rem; border: none;">
+                    <i class="fa-solid fa-magnifying-glass"></i> Search
                 </button>
             </form>
         </div>
@@ -37,12 +37,29 @@
     </div>
 </nav>
 
+<!-- Mobile Search Panel (slide up above tab bar) -->
+<div id="mobileSearchPanel" class="d-lg-none"
+    style="display:none !important; position:fixed; bottom:3.5rem; left:0; right:0; z-index:1029; background:#fff; border-top:1px solid #dee2e6; padding:0.75rem 1rem;">
+    <form class="d-flex align-items-center gap-2" role="search">
+        <input class="form-control" type="search" placeholder="Search destinations" aria-label="Search"
+            style="border-radius:999px; border:1px solid #dee2e6; padding:0.45rem 1rem;">
+        <button class="btn d-flex align-items-center gap-1 text-white text-nowrap" type="submit"
+            style="background-color:#ff385c; border-radius:999px; padding:0.45rem 1.1rem; border:none;">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+    </form>
+</div>
+
 <!-- Bottom Tab Nav for Mobile -->
 <nav class="mobile-bottom-nav d-lg-none">
     <a href="/listings" class="mobile-bottom-nav-item">
         <i class="fa-solid fa-list"></i>
         <span>Explore</span>
     </a>
+    <button type="button" class="mobile-bottom-nav-item border-0 bg-transparent" id="mobileSearchToggle">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Search</span>
+    </button>
     <a href="/listings/new" class="mobile-bottom-nav-item">
         <i class="fa-solid fa-plus"></i>
         <span>Add home</span>
@@ -65,3 +82,20 @@
             </a>
             <% } %>
 </nav>
+
+<script>
+    const toggle = document.getElementById('mobileSearchToggle');
+    const panel = document.getElementById('mobileSearchPanel');
+    toggle.addEventListener('click', () => {
+        panel.classList.toggle('open');
+        if (panel.classList.contains('open')) {
+            panel.querySelector('input').focus();
+        }
+    });
+    // close panel when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!panel.contains(e.target) && e.target !== toggle && !toggle.contains(e.target)) {
+            panel.classList.remove('open');
+        }
+    });
+</script>
