@@ -59,13 +59,13 @@ app.use("/listings", listings);
 app.use("/listings/:id/reviews", reviews);
 app.use("/auth", user);
 
+app.get("/", (req, res) => {
+    res.redirect("/listings");
+});
+
 // page not found routes
 app.use((req, res, next) => {
     next(new ExpressError(404, "Page Not Found"));
-});
-
-app.get("/", (req, res) => {
-    res.send("Hi, I'm root!!")
 });
 
 // error handling

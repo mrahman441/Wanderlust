@@ -45,6 +45,74 @@ body>.container {
     font-size: 1.065rem;
 }
 
+/* Hide scrollbar for filters */
+#filters-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Filter items styling */
+#filters-container .d-flex.flex-column {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.375rem !important;
+}
+
+#filters-container i {
+    font-size: 1.25rem !important;
+}
+
+#filters-container p {
+    font-size: 0.7rem !important;
+}
+
+#filters-container {
+    gap: 1.5rem !important;
+    margin-left: 2.5rem !important;
+    margin-right: 2.5rem !important;
+}
+
+/* Scroll arrow buttons */
+.scroll-arrow {
+    z-index: 10;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scroll-arrow i {
+    font-size: 0.875rem;
+}
+
+.scroll-arrow-left {
+    display: none;
+}
+
+/* Mobile responsive filters */
+@media (max-width: 768px) {
+    .scroll-arrow {
+        display: none !important;
+    }
+
+    #filters-container {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        gap: 1rem !important;
+    }
+
+    #filters-container .d-flex.flex-column {
+        padding: 0.25rem 0.5rem !important;
+    }
+
+    #filters-container i {
+        font-size: 1.1rem !important;
+    }
+
+    #filters-container p {
+        font-size: 0.65rem !important;
+    }
+}
+
 .f-info-links a {
     color: #222222 !important;
     text-decoration: none;

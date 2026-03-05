@@ -1,9 +1,132 @@
 <% layout('./layouts/boilerplate') -%>
 
     <body>
-        <!-- <h3 class="text-left mt-3 text-dark">Find your next adventure</h3> -->
+        <!-- filter like airbnb -->
+        <div class="position-relative d-flex align-items-center py-2">
+            <!-- Left Arrow -->
+            <button id="scroll-left"
+                class="btn btn-light rounded-circle position-absolute start-0 shadow-sm scroll-arrow scroll-arrow-left">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
 
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5 mt-2">
+            <!-- Filters Container -->
+            <div id="filters-container" class="d-flex flex-nowrap overflow-auto gap-4 mx-5"
+                style="scrollbar-width: none; scroll-behavior: smooth;">
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-fire fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Trending</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-bed fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Rooms</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-mountain-city fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Iconic Cities</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-mountain fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Mountains</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-person-swimming fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Pools</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-brands fa-fort-awesome fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Castles</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-campground fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Camping</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-snowflake fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Arctic</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-igloo fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Domes</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-tractor fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Farms</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-umbrella-beach fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Beach</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-water fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Lake</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-tree fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Countryside</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-sun fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Desert</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-ship fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Boats</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-leaf fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Tropical</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-skiing fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Skiing</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-building fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Apartments</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-home fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Tiny Homes</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-caravan fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Campers</p>
+                </div>
+                <div class="d-flex flex-column align-items-center gap-2 text-center px-3 py-2 opacity-75"
+                    style="cursor: pointer; min-width: fit-content;">
+                    <i class="fa-solid fa-lightbulb fs-4"></i>
+                    <p class="mb-0 small fw-semibold">Creative Spaces</p>
+                </div>
+            </div>
+
+            <!-- Right Arrow -->
+            <button id="scroll-right"
+                class="btn btn-light rounded-circle position-absolute end-0 shadow-sm scroll-arrow scroll-arrow-right">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mb-5">
             <% listings.forEach(function(listing) { %>
                 <div class="col">
                     <a class="text-decoration-none" href="/listings/<%= listing.id %>">
