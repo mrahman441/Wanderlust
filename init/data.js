@@ -1,195 +1,159 @@
 const sampleListings = [
     {
-        title: "Cozy Beachfront Cottage",
+        title: "Beachfront Cottage in Cox's Bazar",
         description:
-            "Escape to this charming beachfront cottage for a relaxing getaway. Enjoy stunning ocean views, calming sea breezes, and direct beach access just steps from your door, making it perfect for peaceful mornings and sunset evenings.",
+            "Wake up to the sound of waves at the world's longest natural sea beach. This cozy beachfront cottage offers stunning sunrise views, direct beach access, and a serene escape from city life.",
         image: {
             filename: "listingimage1",
             url: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
         },
-        price: 1500,
-        location: "Malibu",
-        country: "United States",
-        geometry: {
-            type: "Point",
-            coordinates: [-118.7798, 34.0259]
-        }
+        price: 3500,
+        location: "Cox's Bazar",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [91.9775, 21.4272] }
     },
     {
-        title: "Modern Loft in Downtown",
+        title: "Sundarbans Safari Lodge",
         description:
-            "Stay in the heart of the city in this stylish loft apartment. Featuring modern interiors, open living spaces, and easy access to shops, restaurants, and nightlife, it’s ideal for urban explorers.",
+            "Stay deep in the heart of the Sundarbans, the world's largest mangrove forest. Listen to the jungle at night, spot Royal Bengal Tigers, and cruise through winding rivers at dawn.",
         image: {
             filename: "listingimage2",
-            url: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHRyYXZlbHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
+            url: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG1vdW50YWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
-        price: 1200,
-        location: "New York City",
-        country: "United States",
-        geometry: {
-            type: "Point",
-            coordinates: [-74.0060, 40.7128]
-        }
+        price: 5000,
+        location: "Khulna",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [89.5644, 22.8456] }
     },
     {
-        title: "Mountain Retreat",
+        title: "Sylhet Tea Garden Villa",
         description:
-            "Unplug and unwind in this peaceful mountain cabin surrounded by nature. Enjoy fresh air, scenic trails, and quiet evenings that make it the perfect place to relax and recharge.",
+            "Immerse yourself in the lush green tea gardens of Sylhet. This charming villa sits among rolling tea estates offering misty mornings, fresh tea, and a peaceful hillside retreat.",
         image: {
             filename: "listingimage3",
             url: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8aG90ZWxzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
-        price: 1000,
-        location: "Aspen",
-        country: "United States",
-        geometry: {
-            type: "Point",
-            coordinates: [-106.8175, 39.1911]
-        }
+        price: 4000,
+        location: "Sylhet",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [91.8687, 24.8949] }
     },
     {
-        title: "Historic Villa in Tuscany",
+        title: "Bandarban Mountain Retreat",
         description:
-            "Experience the charm of Tuscany in this beautifully restored historic villa. Surrounded by rolling hills and vineyards, it offers a timeless Italian countryside escape.",
+            "Escape to the misty peaks of the Chittagong Hill Tracts. This hilltop retreat offers breathtaking panoramic views, cool mountain air, and a gateway to trekking trails through tribal villages.",
         image: {
             filename: "listingimage4",
-            url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWxzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            url: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdW50YWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
-        price: 2500,
-        location: "Florence",
-        country: "Italy",
-        geometry: {
-            type: "Point",
-            coordinates: [11.2558, 43.7696]
-        }
+        price: 3000,
+        location: "Bandarban",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [92.2186, 22.1953] }
     },
     {
-        title: "Secluded Treehouse Getaway",
+        title: "Saint Martin's Island Bungalow",
         description:
-            "Live among the treetops in this unique and secluded treehouse retreat. Perfect for nature lovers seeking peace, privacy, and a memorable off-grid experience.",
+            "Bangladesh's only coral island awaits. This beachfront bungalow gives you crystal-clear turquoise waters, vibrant reef life, fresh seafood, and some of the most spectacular starry skies in the country.",
         image: {
             filename: "listingimage5",
             url: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fGhvdGVsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
         },
-        price: 800,
-        location: "Portland",
-        country: "United States",
-        geometry: {
-            type: "Point",
-            coordinates: [-122.6784, 45.5152]
-        }
+        price: 4500,
+        location: "Saint Martin's Island",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [92.3211, 20.6277] }
     },
     {
-        title: "Beachfront Paradise",
+        title: "Rangamati Lakeside Cabin",
         description:
-            "Step out of your door directly onto the sandy beach. This beachfront condo offers breathtaking ocean views, soothing waves, and ultimate relaxation.",
+            "Perched on the banks of the stunning Kaptai Lake, this wooden cabin offers breathtaking water views, boat rides through shimmering valleys, and a glimpse into the culture of indigenous hill communities.",
         image: {
             filename: "listingimage6",
-            url: "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGhvdGVsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
+            url: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bGFrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
         },
-        price: 2000,
-        location: "Cancun",
-        country: "Mexico",
-        geometry: {
-            type: "Point",
-            coordinates: [-86.8515, 21.1619]
-        }
+        price: 2800,
+        location: "Rangamati",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [92.1988, 22.6524] }
     },
     {
-        title: "Rustic Cabin by the Lake",
+        title: "Old Dhaka Heritage Haveli",
         description:
-            "Spend your days fishing, kayaking, and relaxing by the serene lake. This rustic cabin is ideal for outdoor enthusiasts and quiet retreats.",
+            "Step back in time in this beautifully restored Mughal-era haveli in the heart of Old Dhaka. Walking distance from Lalbagh Fort, Ahsan Manzil, and the buzzing lanes of the old city.",
         image: {
             filename: "listingimage7",
-            url: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdW50YWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            url: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWxzfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
-        price: 900,
-        location: "Lake Tahoe",
-        country: "United States",
-        geometry: {
-            type: "Point",
-            coordinates: [-120.0324, 39.0968]
-        }
+        price: 3200,
+        location: "Dhaka",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [90.4125, 23.8103] }
     },
     {
-        title: "Luxury Penthouse with City Views",
+        title: "Kuakata Sunrise Beach House",
         description:
-            "Indulge in luxury living with panoramic city views from this stunning penthouse. Designed for comfort and elegance, it’s perfect for an upscale stay.",
+            "Kuakata — the Daughter of the Sea — is one of the few places in the world where you can see both sunrise and sunset over the ocean. Wake up early to witness magical golden dawns from your private porch.",
         image: {
             filename: "listingimage8",
-            url: "https://images.unsplash.com/photo-1622396481328-9b1b78cdd9fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2t5JTIwdmFjYXRpb258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
-        },
-        price: 3500,
-        location: "Los Angeles",
-        country: "United States",
-        geometry: {
-            type: "Point",
-            coordinates: [-118.2437, 34.0522]
-        }
-    },
-    {
-        title: "Ski-In/Ski-Out Chalet",
-        description:
-            "Hit the slopes right from your doorstep in this ski-in/ski-out chalet. Located in the Swiss Alps, it’s perfect for winter sports lovers.",
-        image: {
-            filename: "listingimage9",
             url: "https://images.unsplash.com/photo-1502784444187-359ac186c5bb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHNreSUyMHZhY2F0aW9ufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
-        price: 3000,
-        location: "Verbier",
-        country: "Switzerland",
-        geometry: {
-            type: "Point",
-            coordinates: [7.2280, 46.0963]
-        }
+        price: 2500,
+        location: "Kuakata",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [90.1154, 21.8219] }
     },
     {
-        title: "Safari Lodge in the Serengeti",
+        title: "Srimangal Tea Estate Cabin",
         description:
-            "Experience the thrill of the wild in a comfortable safari lodge. Witness breathtaking wildlife and the Great Migration up close.",
+            "Known as the tea capital of Bangladesh, Srimangal's rolling estates are a sight to behold. Stay in this cozy wooden cabin surrounded by tea bushes, birds, and the serene beauty of the countryside.",
+        image: {
+            filename: "listingimage9",
+            url: "https://images.unsplash.com/photo-1586375300773-8384e3e4916f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGxvZGdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+        },
+        price: 2200,
+        location: "Srimangal",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [91.7306, 24.3059] }
+    },
+    {
+        title: "Khagrachhari Eco Lodge",
+        description:
+            "Nestled in the lush green hills of Khagrachhari, this eco lodge offers trekking to Alutila Cave, visits to nearby waterfalls, and authentic tribal cuisine — all surrounded by untouched natural beauty.",
         image: {
             filename: "listingimage10",
-            url: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjl8fG1vdW50YWlufGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
+            url: "https://images.unsplash.com/photo-1618140052121-39fc6db33972?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
         },
-        price: 4000,
-        location: "Serengeti National Park",
-        country: "Tanzania",
-        geometry: {
-            type: "Point",
-            coordinates: [34.8333, -2.3333]
-        }
+        price: 2000,
+        location: "Khagrachhari",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [91.9847, 23.1193] }
     },
     {
-        title: "Historic Canal House",
+        title: "Barisal River Float House",
         description:
-            "Stay in a beautifully preserved historic canal house located in Amsterdam’s iconic district, offering charm, culture, and scenic views.",
+            "Experience the Venice of Bengal from a traditional float house on the serene backwaters of Barisal. Drift past floating guava markets, lush wetlands, and timeless rural life at a gentle pace.",
         image: {
             filename: "listingimage11",
             url: "https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2FtcGluZ3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
         },
         price: 1800,
-        location: "Amsterdam",
-        country: "Netherlands",
-        geometry: {
-            type: "Point",
-            coordinates: [4.8952, 52.3702]
-        }
+        location: "Barisal",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [90.3635, 22.7010] }
     },
     {
-        title: "Private Island Retreat",
+        title: "Paharpur Heritage Guesthouse",
         description:
-            "Have an entire island to yourself for a truly exclusive and unforgettable vacation experience surrounded by crystal-clear waters.",
+            "Stay steps away from the UNESCO World Heritage Site of Somapura Mahavihara — the largest Buddhist monastery in the Indian subcontinent. A truly historic and tranquil destination in northern Bangladesh.",
         image: {
             filename: "listingimage12",
-            url: "https://images.unsplash.com/photo-1618140052121-39fc6db33972?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
+            url: "https://images.unsplash.com/photo-1587381420270-3e1a5b9e6904?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGxvZGdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60"
         },
-        price: 10000,
-        location: "Fiji",
-        country: "Fiji",
-        geometry: {
-            type: "Point",
-            coordinates: [178.0650, -17.7134]
-        }
+        price: 1500,
+        location: "Naogaon",
+        country: "Bangladesh",
+        geometry: { type: "Point", coordinates: [88.9757, 25.0317] }
     },
 ];
 
