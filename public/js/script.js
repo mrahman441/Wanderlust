@@ -57,3 +57,26 @@ container.addEventListener('scroll', updateButtons);
 // Initial check
 updateButtons();
 
+// Tax Toggle Functionality
+const taxToggle = document.getElementById('taxToggle');
+const TAX_RATE = 0.18; // 18% tax rate
+
+if (taxToggle) {
+    taxToggle.addEventListener('change', function () {
+        const priceElements = document.querySelectorAll('.listing-price');
+
+        priceElements.forEach(priceElement => {
+            const basePrice = parseFloat(priceElement.getAttribute('data-price'));
+
+            if (taxToggle.checked) {
+                // Show price with tax
+                const priceWithTax = basePrice * (1 + TAX_RATE);
+                priceElement.innerHTML = `$${priceWithTax.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })} / night <span class="text-muted small">+18% GST</span>`;
+            } else {
+                // Show price without tax
+                priceElement.innerHTML = `$${basePrice.toLocaleString("en-US")}/night`;
+            }
+        });
+    });
+}
+
