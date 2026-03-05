@@ -7,7 +7,7 @@
                 style="width: 70px; height: 70px; font-size: 2rem; flex-shrink: 0;">
                 <i class="fa-solid fa-user"></i>
             </div>
-            <div>
+            <div class="flex-grow-1">
                 <h4 class="mb-0 fw-bold">
                     <%= currentUser.username %>
                 </h4>
@@ -15,6 +15,9 @@
                     <%= currentUser.email %>
                 </span>
             </div>
+            <a href="/auth/logout" class="btn btn-outline-dark btn-sm d-none d-lg-inline-block">
+                <i class="fa-solid fa-right-from-bracket"></i> Logout
+            </a>
         </div>
 
         <hr>
