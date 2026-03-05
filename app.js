@@ -9,6 +9,7 @@ const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
 const errorHandler = require("./utils/errorHandler.js");
 const session = require("express-session");
+const connectMongo = require("connect-mongo");
 const flash = require("connect-flash");
 const passport = require("passport");
 const LocalStrategy = require("passport-local"); // for authentication
@@ -29,8 +30,23 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.engine("ejs", ejsMate); // ejs-mate for layouts
 
+// session configuration for production
+const MongoStore = connectMongo.default || connectMongo;
+const store = MongoStore.create({
+    mongoUrl: process.env.ATLASDB_URL, // db url
+    crypto: {
+        secret: "riarianaurmisecret",
+    },
+    touchAfter: 24 * 60 * 60, // time period in seconds to update the session in the database
+})
+store.on("error", (e) => {
+    console.log("Session store error: ", e);
+});
+
+// session configuration for development
 app.use(session({
-    secret: "riarianaurmiprity",
+    store, // for production
+    secret: "riarianaurmisecret",
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -39,6 +55,7 @@ app.use(session({
         httpOnly: true,
     }
 }));
+
 app.use(flash());
 
 app.use(passport.initialize());
