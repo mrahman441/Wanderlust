@@ -23,39 +23,42 @@ const container = document.getElementById('filters-container');
 const scrollLeftBtn = document.getElementById('scroll-left');
 const scrollRightBtn = document.getElementById('scroll-right');
 
-// Scroll amount
-const scrollAmount = 300;
+// Only run filter code if elements exist
+if (container && scrollLeftBtn && scrollRightBtn) {
+    // Scroll amount
+    const scrollAmount = 300;
 
-// Check scroll position and show/hide buttons
-function updateButtons() {
-    if (container.scrollLeft > 0) {
-        scrollLeftBtn.style.display = 'block';
-    } else {
-        scrollLeftBtn.style.display = 'none';
+    // Check scroll position and show/hide buttons
+    function updateButtons() {
+        if (container.scrollLeft > 0) {
+            scrollLeftBtn.style.display = 'block';
+        } else {
+            scrollLeftBtn.style.display = 'none';
+        }
+
+        if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
+            scrollRightBtn.style.display = 'none';
+        } else {
+            scrollRightBtn.style.display = 'block';
+        }
     }
 
-    if (container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
-        scrollRightBtn.style.display = 'none';
-    } else {
-        scrollRightBtn.style.display = 'block';
-    }
+    // Scroll left
+    scrollLeftBtn.addEventListener('click', () => {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    });
+
+    // Scroll right
+    scrollRightBtn.addEventListener('click', () => {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    });
+
+    // Update buttons on scroll
+    container.addEventListener('scroll', updateButtons);
+
+    // Initial check
+    updateButtons();
 }
-
-// Scroll left
-scrollLeftBtn.addEventListener('click', () => {
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-});
-
-// Scroll right
-scrollRightBtn.addEventListener('click', () => {
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-});
-
-// Update buttons on scroll
-container.addEventListener('scroll', updateButtons);
-
-// Initial check
-updateButtons();
 
 // Tax Toggle Functionality
 const taxToggle = document.getElementById('taxToggle');
@@ -79,4 +82,45 @@ if (taxToggle) {
         });
     });
 }
+
+// Form Loading Spinner Functionality
+document.addEventListener('DOMContentLoaded', function () {
+    const newListingForm = document.getElementById('new-listing-form');
+    const editListingForm = document.getElementById('edit-listing-form');
+    const loadingOverlay = document.getElementById('loading-overlay');
+
+    // Handle new listing form submit
+    if (newListingForm && loadingOverlay) {
+        newListingForm.addEventListener('submit', function (e) {
+            // Only show loader if form is valid (Bootstrap validation already prevents invalid submission)
+            if (this.checkValidity()) {
+                // Show loading overlay
+                loadingOverlay.style.display = 'flex';
+
+                // Disable submit button to prevent double submission
+                const submitBtn = document.getElementById('submit-btn');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                }
+            }
+        });
+    }
+
+    // Handle edit listing form submit
+    if (editListingForm && loadingOverlay) {
+        editListingForm.addEventListener('submit', function (e) {
+            // Only show loader if form is valid (Bootstrap validation already prevents invalid submission)
+            if (this.checkValidity()) {
+                // Show loading overlay
+                loadingOverlay.style.display = 'flex';
+
+                // Disable submit button to prevent double submission
+                const submitBtn = document.getElementById('submit-btn');
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                }
+            }
+        });
+    }
+});
 
