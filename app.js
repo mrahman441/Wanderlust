@@ -72,14 +72,16 @@ app.use((req, res, next) => {
 app.use(errorHandler);
 
 // database connection
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+// const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl = process.env.ATLASDB_URL;
+
 main().then(() => {
     console.log("connected to mongoose");
 }).catch((error) => {
     console.log(error);
 })
 async function main() {
-    await mongoose.connect(MONGO_URL);
+    await mongoose.connect(dbUrl);
 }
 
 app.listen(8080, () => {
